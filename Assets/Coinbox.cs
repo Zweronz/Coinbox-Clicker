@@ -357,7 +357,7 @@ Max level achieved!";
         transform.localScale = Vector3.one;
         
         newCoin.SetActive(true);
-        newCoin.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-20000f, 20000f), 35000f));
+        newCoin.GetComponent<Rigidbody2D>().AddForce(new Vector2(UnityEngine.Random.Range(-20000f, 20000f), UnityEngine.Random.Range(40000f, 50000f)));
 
         Destroy(newCoin, 3f);
     }
