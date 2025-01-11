@@ -346,6 +346,12 @@ Max level achieved!";
         Coin coin = coins[currentCoins.Next()];
         save.coins += coin.value;
 
+        //dk why the game does it like this but it does
+        if (save.coins > 999999999999999999)
+        {
+            save.coins -= 999999000000000000;
+        }
+
         GameObject newCoin = Instantiate(templateCoin);
         newCoin.GetComponent<UnityEngine.UI.RawImage>().texture = coin.sprite;
 
