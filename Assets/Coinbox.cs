@@ -209,7 +209,7 @@ Max level achieved!";
                             currentPercentages[i].coin.transform.parent.gameObject.SetActive(true);
 
                             currentPercentages[i].coin.texture = coins[coinTypesUpgrades[save.coinTypeLevel].instances[i].coin].sprite;
-                            currentPercentages[i].text.text = "%" + coinTypesUpgrades[save.coinTypeLevel].instances[i].percentage;
+                            currentPercentages[i].text.text = coinTypesUpgrades[save.coinTypeLevel].instances[i].percentage + "%";
                         }
                         else
                         {
@@ -224,7 +224,7 @@ Max level achieved!";
                             nextPercentages[i].coin.transform.parent.gameObject.SetActive(true);
 
                             nextPercentages[i].coin.texture = coins[coinTypesUpgrades[save.coinTypeLevel + 1].instances[i].coin].sprite;
-                            nextPercentages[i].text.text = "%" + coinTypesUpgrades[save.coinTypeLevel + 1].instances[i].percentage;
+                            nextPercentages[i].text.text = coinTypesUpgrades[save.coinTypeLevel + 1].instances[i].percentage + "%";
                         }
                         else
                         {
@@ -252,7 +252,7 @@ Upgrade cost:";
                             currentPercentages[i].coin.transform.parent.gameObject.SetActive(true);
 
                             currentPercentages[i].coin.texture = coins[coinTypesUpgrades[save.coinTypeLevel].instances[i].coin].sprite;
-                            currentPercentages[i].text.text = "%" + coinTypesUpgrades[save.coinTypeLevel].instances[i].percentage;
+                            currentPercentages[i].text.text = coinTypesUpgrades[save.coinTypeLevel].instances[i].percentage + "%";
                         }
                         else
                         {
