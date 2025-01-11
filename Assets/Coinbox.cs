@@ -35,7 +35,7 @@ public class Coinbox : MonoBehaviour
 
     public GameObject resetPopup, creditsPopup;
 
-    public GameObject templateCoin, coinStackBackground, coinStackForeground;
+    public GameObject templateCoin, coinStackBackground, coinStackForeground, maxLevelText;
     
     private AudioSource source;
 
@@ -176,6 +176,7 @@ Next level:
 Upgrade cost:";
 
                     popupPrice.text = "$" + multiClickerUpgrades[save.multiClickLevel + 1].cost.ToString("N0");
+                    maxLevelText.SetActive(false);
                 }
                 else
                 {
@@ -183,11 +184,10 @@ Upgrade cost:";
 
                     popupText.text =
 @$"Current level:
-{multiClickerUpgrades[save.multiClickLevel].clicks} coins per click
-
-Max level achieved!";
+{multiClickerUpgrades[save.multiClickLevel].clicks} coins per click";
 
                     popupPrice.text = "";
+                    maxLevelText.SetActive(true);
                 }
 
                 break;
@@ -240,6 +240,7 @@ Next level:
 Upgrade cost:";
 
                     popupPrice.text = "$" + coinTypesUpgrades[save.coinTypeLevel + 1].cost.ToString("N0");
+                    maxLevelText.SetActive(false);
                 }
                 else
                 {
@@ -266,11 +267,10 @@ Upgrade cost:";
                     }
 
                     popupText.text =
-@$"Current level:
-
-Max level achieved!";
+@$"Current level:";
 
                     popupPrice.text = "";
+                    maxLevelText.SetActive(true);
                 }
 
                 break;
@@ -293,6 +293,7 @@ Next level:
 Upgrade cost:";
 
                     popupPrice.text = "$" + autoClickerUpgrades[save.autoClickerLevel + 1].cost.ToString("N0");
+                    maxLevelText.SetActive(false);
                 }
                 else
                 {
@@ -300,11 +301,10 @@ Upgrade cost:";
 
                     popupText.text =
 @$"Current level:
-{autoClickerUpgrades[save.autoClickerLevel].coins} coins per sec
-
-Max level achieved!";
+{autoClickerUpgrades[save.autoClickerLevel].coins} coins per sec";
 
                     popupPrice.text = "";
+                    maxLevelText.SetActive(true);
                 }
 
                 break;
@@ -349,14 +349,14 @@ Max level achieved!";
         //dk why the game does it like this but it does
         if (save.coins > 999999999999999999)
         {
-            save.coins -= 999999000000000000;
+            save.coins = long.Parse(save.coins.ToString().Substring(save.coins.ToString().Length - 15));
         }
 
         GameObject newCoin = Instantiate(templateCoin);
         newCoin.GetComponent<UnityEngine.UI.RawImage>().texture = coin.sprite;
 
         RectTransform transform = newCoin.GetComponent<RectTransform>();
-        transform.parent = UnityEngine.Random.Range(0, 2) == 1 ? coinStackForeground.transform : coinStackBackground.transform;
+        transform.SetParent(UnityEngine.Random.Range(0, 2) == 1 ? coinStackForeground.transform : coinStackBackground.transform);
 
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
